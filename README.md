@@ -1,43 +1,68 @@
 
+> File
+* 42.c
+* pointer.c
 
-> 42, or The Answer to the Ultimate Question of Life, The Universe, and Everything
+### Binary
+> **Bit** -> Short for Binary digit. Represent only **0 or 1**. *(Yes/No, On/Off)*\
+>**Byte** -> Unit of digital information. **Contain 8 bits.**
 
-The supercomputer had this function ready:
-```c
-#include <stdio.h>
+### System
+>**Power expression** -> | **x^0** = The rest. (Unit) | **x^1** = First power | **x^2** = Second power ...\
+>**Power calcul** -> *Right to left* -> **= (x * 1) + (x * 2) + (x * 3)** = **x + x^0**\
+> **Decimal system** -> Power of 10\
+> **Binary system** ->	Power of 2
 
-#define true  1
-#define false 0
+### Binary Maths
+>**1**		00000001 | **11**	00001011\
+>**2**		00000010 | **12**	00001100\
+>**3**		00000011 | **13**	00001101\
+>**4**		00000100 | **14**	00001110\
+>**5**		00000101 | **15**	00001111\
+>**6**		00000110 | **max**	**4 bits = 15 values**\
+>**7**		00000111 | **max**	**8 bits = 256 values (1 Byte)**\
+>**8**		00001000\
+>**9**		00001001\
+>**10**	00001010
 
-int what_is_forty_two(void) {
-    int n = true << 1 | false; // n = 0b10;
-    while (__builtin_popcount(n) != 3) // stop when reaching 3 bits set
-        n |= n << 2;  // n adds two empty bits with << 2 (x4) and add itself with |
-    return (++n == '*') ? n : !!n * (n - 1); // you may simply return n;
-}
+> **Error Overflow** = max + (x > 0);
 
-int main(void) {
-    char *question = "What is the answer to Life, the Universe and Everything?\n";
-    printf("%sDeep Thought: %d\n", question, what_is_forty_two()); // %s print a string, and %d an integer
-    return 0;
-}
+## C Data Types
+### bool
+> <stdbool.h>
 
-### C Data Types
+### char *(Also an integer)*  **1 byte**
+>00000000\
+>max 8 bits = **256 values**\
+>256 = **1 * 2^8**
+### short *(short integer)* **2 bytes**
+Half the size of an integer, used to optimize memory
+>00000000 00000000\
+>max 16 bits = **65 536 values**\
+>65 536 = **1 * 2^16**
 
-I will only list the main ones
+### integer **4 bytes**
+Loop Counter, operations on integers
+>00000000 00000000 00000000 00000000\
+>max 32 bits = **4 294 967 296 values**\
+>4 294 967 296 = **1 * 2^32**
 
-|Data Type|Bytes|Description|
-|-|-|-|
-|char|1|Used for text
-|bool|1|Used to return true or false, you will need the header <stdbool.h>
-|short|2|Half the size of an integer, used to optimize memory
-|int|4|Loop Counter, operations on integers
-|long|8|Twice the size of an integer, used when overflow is a problem
-|float|4|Used for computer graphics
-|double|8|Used for computer graphics, more precised than float but takes more memory
-|unsigned|.|Apply to char, short, int and long, means than it cannot have negative values
+### long *(long integer)* **8 bytes**
+Twice the size of an integer, used when overflow is a problem
+>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000\
+>max 64 bits = **1,84467441E+19 values**\
+>1,84467441E+19 = **1 * 2^64**
 
-You should then try to recode basic C functions
+### floating point (float) (4 byte)
+Used for computer graphics. Way of representing 2/5, 1.234, 9.9999, pi number . . .\
+Similar to scientific notation.\
+
+### double (double floating point) (8)
+Represent non-integer. Used for computer graphics, more precised than float but takes more memory.
+
+* unsigned      Apply to char, short, int and long, means than it cannot have negative values
+
+
 
 ### Pointers
 
