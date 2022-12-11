@@ -13,6 +13,22 @@
 > **Decimal system** -> Power of 10\
 > **Binary system** ->	Power of 2
 
+
+### The importance of Power of 2
+Number that are power of 2 are the simpliest to represent;
+> 256 = **1** * 2^8
+
+Number between power of 2 look like this:
+> 160 = **1.25** * 2^7
+
+Non-integers that are power of 2:
+>0.50 = **1** * 2^-1
+
+Non-integers (floating points) between power of 2 :
+>0.750 = **1.5** x 2^-1
+
+>**Roundoff error** -> 0.1 + 0.1 + 0.1 = 010101010101010101010101010101...
+
 ### Binary Maths
 >**1**		00000001 | **11**	00001011\
 >**2**		00000010 | **12**	00001100\
@@ -54,48 +70,19 @@ Twice the size of an integer, used when overflow is a problem
 >1,84467441E+19 = **1 * 2^64**
 
 ### floating point (float) (4 byte)
-Used for computer graphics. Way of representing 2/5, 1.234, 9.9999, pi number . . .\
-Similar to scientific notation.\
+Used for computer graphics. 
+>Way of representing 2/5, 1.234, 9.9999, pi number . . .\
+>Similar to scientific notation.
 
-### double (double floating point) (8)
-Represent non-integer. Used for computer graphics, more precised than float but takes more memory.
+### double (double floating point) **8 bytes**
+>Represent non-integer. Used for computer graphics, more precised than float but takes more memory.\
+>**1** bit for the sign\
+>**11** bits for exponent\
+>**52** bits for the number in front
 
-* unsigned      Apply to char, short, int and long, means than it cannot have negative values
+### unsigned
+Apply to char, short, int and long, means than it cannot have negative values
 
-
-
-### Pointers
-
-```c
-#include <stdio.h>
-
-int main(void) {
-	int a = 5;	// declaring an integer variable and assigning the value of 5
-	int *ptr;	// declaring a pointer to integer
-	int b;		// declaring an integer variable
-    printf("ptr's value: %2d, ptr's address: %p\n\n", *ptr, ptr);
-
-	ptr = &a;	// pointer ptr points to what is stored at the memory address of variable a
-	b = a;		// b will take the value and not the address
-	a = 42;		// b is still equal to 5, but ptr will return 42, which is the value now stored at a's location;
-	printf("  a's value: %2d,   a's address: %p\n", a, &a);
-	printf("ptr's value: %2d, ptr's address: %p\n", *ptr, ptr); // you will get the same as above, notice that you have to dereference the pointer with * to get the value, and using the pointer alone (ptr) will give you the memory address.
-	printf("  b's value: %2d,   b's address: %p\n", b, &b);
-	//printf("Size of ptr: %zu\n", sizeof(ptr)); // size of ptr in bytes, 8 on my system.
-	return 0;
-}
-```
-
-You will get this kind of output:
-```
-ptr's value:  1, ptr's address: 0x7ffd99493000
-
-  a's value: 42,   a's address: 0x7ffd99492f08
-ptr's value: 42, ptr's address: 0x7ffd99492f08  <-- they now match thanks to ptr = &a
-  b's value:  5,   b's address: 0x7ffd99492f0c
-```
-
-**NB: On the second printf you will get the value that you got for `a`, notice that you have to dereference the pointer with * to get the value, and using the pointer alone (ptr) will give you the memory address.**
 
 
 #### [About Endianness](https://en.wikipedia.org/wiki/Endianness).
